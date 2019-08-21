@@ -21,40 +21,43 @@ function TeamForm(props) {
           id: uuid()
         };
         props.addNewTeamMember(newTeamMember);
-        setNewMember({ name: "", email: "", row: "" });
+        setNewMember({ name: "", email: "", role: "" });
       };
       
     return (
         <div className="team-container">
             <h3>Team Form</h3>
-            <form>
+            <form  onSubmit={submitForm}>
                 {/* Name Input */}
                 <label htmlFor="name">Name</label>
                 <input 
                 type="text"
                 name="name"
                 placeholder="First Name"
-                // value=""
+                value={newMember.name}
                 onChange={changeHandler}
                 />
 
                 {/* Email Input */}
                 <label htmlFor="email">Email</label>
                 <input 
-                type="text"
+                type="email"
                 name="email"
                 placeholder="b@lambda.com"
-                // value=""
+                value={newMember.email}
                 onChange={changeHandler}
                 />
 
                 {/* Role Input */}
                 <label htmlFor="role">Role</label>
-                <select name="role">
-                    <option value="">Frontend Engineer</option>
-                    <option value="">Backend Engineer</option>
-                    <option value="">Designer</option>
-                </select>
+                <input 
+                type="text"
+                name="role"
+                placeholder="i.e. Web Developer"
+                value={newMember.role}
+                onChange={changeHandler} 
+                />
+                <button type="submit">Save</button>
             </form>
         </div>
     )
